@@ -1,0 +1,25 @@
+#sidebar {
+    max-width: 100vh;
+    height: auto;
+    background-color: rgb(14, 30, 52);
+    color: #fff;
+    transition: all 0.3s;
+  }
+
+
+  #sidebar,ul>li>a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+  }
+ 
+ul>li:active{
+  background-color: rgb(218, 118, 24);
+ 
+}
+  
+  
+
+  

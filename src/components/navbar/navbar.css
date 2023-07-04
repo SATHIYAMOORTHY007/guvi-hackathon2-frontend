@@ -1,0 +1,15 @@
+.topnav {
+    background-color: rgb(5, 20, 40);
+    display: flex;
+    flex-direction:row;
+    width:100%;
+    color: aliceblue;
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+  }
+  
+.fa-dashboard,.fa-home{
+    color:rgb(255, 153, 0);
+}
+

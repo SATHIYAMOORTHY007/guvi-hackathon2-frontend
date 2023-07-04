@@ -1,0 +1,15 @@
+form{
+    display: flex;
+    justify-content: center;
+    padding: 4px 4px 0px 0px;
+   
+}
+h1{
+color:white;
+}
+
+.admin-text{
+    color: pink;
+    text-align: end;
+    padding:0.5rem;
+}

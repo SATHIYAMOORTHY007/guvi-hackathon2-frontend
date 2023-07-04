@@ -1,0 +1,19 @@
+
+
+.card{
+    width: 20rem;
+    height:30rem;
+   margin: 2rem 1rem;
+  
+}
+.card-img-top{
+    height: 14rem;
+   width: 7rem;
+  
+}
+
+#grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 1rem;   
+}

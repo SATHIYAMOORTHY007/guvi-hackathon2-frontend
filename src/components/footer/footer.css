@@ -1,0 +1,9 @@
+footer{
+    background-color: rgb(5, 20, 40);
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+   float: right;
+   width: 100%;
+   position:fixed;
+   bottom: 0%;
+}

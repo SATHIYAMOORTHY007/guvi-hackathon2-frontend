@@ -1,0 +1,7 @@
+.options{
+    display: flex;
+    flex-direction:row;
+}
+select{
+    width: 20rem;
+}
