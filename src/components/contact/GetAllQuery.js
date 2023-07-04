@@ -14,7 +14,7 @@ function GetAllQuery() {
   let list = async () => {
     try {
       const Query = await axios.post(
-        'http://localhost:2001/api/v1/auth/getAllQuery',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/auth/getAllQuery',
       )
 
       setArray(Query.data)

@@ -23,11 +23,14 @@ function TheaterList() {
         'Are You Sure You Want To Delete Data ?',
       )
       if (confirmdate) {
-        await axios.delete(`http://localhost:2001/api/v1/deleteTheater/${id}`, {
-          headers: {
-            token: auth.token,
+        await axios.delete(
+          `https://bookmyshow-ukl3.onrender.com/api/v1/deleteTheater/${id}`,
+          {
+            headers: {
+              token: auth.token,
+            },
           },
-        })
+        )
         list()
       }
       setLoading(false)
@@ -40,7 +43,7 @@ function TheaterList() {
     setLoading(true)
     try {
       const Theaters = await axios.get(
-        'http://localhost:2001/api/v1/getAllTheater',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/getAllTheater',
         {
           headers: {
             token: auth.token,

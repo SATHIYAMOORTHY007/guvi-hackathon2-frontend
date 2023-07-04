@@ -24,7 +24,7 @@ function UpdateTheater() {
     setLoading(true)
     try {
       const theater = await axios.post(
-        `http://localhost:2001/api/v1/getParticularTheater/${params.id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getParticularTheater/${params.id}`,
       )
       setLoading(false)
       myformik.setValues(theater.data.message)
@@ -45,7 +45,7 @@ function UpdateTheater() {
       setLoading(true)
       try {
         const updateTheater = await axios.put(
-          `http://localhost:2001/api/v1/updateTheater/${params.id}`,
+          `https://bookmyshow-ukl3.onrender.com/api/v1/updateTheater/${params.id}`,
           values,
           {
             headers: {

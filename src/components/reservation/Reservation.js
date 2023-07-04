@@ -39,7 +39,7 @@ function Reservation() {
   }, [])
   const api = async () => {
     const movie = await axios.post(
-      `http://localhost:2001/api/v1/getParticularMovie/${params.movieid}`,
+      `https://bookmyshow-ukl3.onrender.com/api/v1/getParticularMovie/${params.movieid}`,
     )
     setMoviename(movie.data.message.name)
     setImage(movie.data.message.image)
@@ -47,7 +47,7 @@ function Reservation() {
     setGenre(movie.data.message.genre)
 
     const theater = await axios.post(
-      `http://localhost:2001/api/v1/getParticularTheater/${params.theaterid}`,
+      `https://bookmyshow-ukl3.onrender.com/api/v1/getParticularTheater/${params.theaterid}`,
     )
 
     setOccupied(theater.data.message.seats)
@@ -70,7 +70,7 @@ function Reservation() {
 
     try {
       const a = await axios.post(
-        'http://localhost:2001/api/v1/createReservation',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/createReservation',
         data,
         {
           headers: {
@@ -86,7 +86,7 @@ function Reservation() {
         })
       })
       let seatUpdate = await axios.put(
-        `http://localhost:2001/api/v1/updateSeats/${params.theaterid}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/updateSeats/${params.theaterid}`,
         occupied,
         {
           headers: {

@@ -18,7 +18,7 @@ function Home() {
     setLoading(true)
     try {
       const value = await axios.get(
-        'http://localhost:2001/api/v1/getAllMovie',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/getAllMovie',
         {
           headers: {
             token: auth.token,

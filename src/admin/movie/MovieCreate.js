@@ -36,11 +36,15 @@ function MovieCreate() {
       data.endDate = selecteenddate
 
       console.log(data)
-      const a = await axios.post('http://localhost:2001/api/v1/create', data, {
-        headers: {
-          token: auth.token,
+      const a = await axios.post(
+        'https://bookmyshow-ukl3.onrender.com/api/v1/create',
+        data,
+        {
+          headers: {
+            token: auth.token,
+          },
         },
-      })
+      )
 
       setLoading(false)
       alert('success')

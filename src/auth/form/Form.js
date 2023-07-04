@@ -31,7 +31,7 @@ function Form() {
       try {
         setLoading(true)
         const value = await axios.post(
-          'http://localhost:2001/api/v1/auth/login',
+          'https://bookmyshow-ukl3.onrender.com/api/v1/auth/login',
           values,
         )
 

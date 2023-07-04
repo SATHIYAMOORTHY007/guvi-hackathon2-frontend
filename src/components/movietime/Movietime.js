@@ -11,7 +11,7 @@ function Movietime() {
   const getalldata = async () => {
     try {
       const value = await axios.get(
-        `http://localhost:2001/api/v1/getshowTimes/${params.id}/${params._id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getshowTimes/${params.id}/${params._id}`,
         {
           headers: {
             token: auth.token,

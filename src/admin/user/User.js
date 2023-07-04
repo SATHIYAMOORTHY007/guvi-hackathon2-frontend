@@ -18,17 +18,23 @@ function User() {
 
   const getShow = async () => {
     try {
-      let a = await axios.get('http://localhost:2001/api/v1/getAllMovie', {
-        headers: {
-          token: auth.token,
+      let a = await axios.get(
+        'https://bookmyshow-ukl3.onrender.com/api/v1/getAllMovie',
+        {
+          headers: {
+            token: auth.token,
+          },
         },
-      })
+      )
       setMovie(a.data.message)
-      let b = await axios.get('http://localhost:2001/api/v1/getAllTheater', {
-        headers: {
-          token: auth.token,
+      let b = await axios.get(
+        'https://bookmyshow-ukl3.onrender.com/api/v1/getAllTheater',
+        {
+          headers: {
+            token: auth.token,
+          },
         },
-      })
+      )
       setTheater(b.data.message)
     } catch (err) {
       console.log(err.message)
@@ -38,7 +44,7 @@ function User() {
   const getData = async (e) => {
     try {
       let a = await axios.post(
-        `http://localhost:2001/api/v1/getreservedUser/${movie_id}/${theater_id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getreservedUser/${movie_id}/${theater_id}`,
       )
       setReserved(a)
     } catch (err) {

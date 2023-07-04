@@ -27,7 +27,7 @@ function Reset() {
     onSubmit: async (values) => {
       try {
         await axios.post(
-          `http://localhost:2001/api/v1/auth/resetpassword/${params.id}/${params.token}`,
+          `https://bookmyshow-ukl3.onrender.com/api/v1/auth/resetpassword/${params.id}/${params.token}`,
           values,
         )
         alert('success')

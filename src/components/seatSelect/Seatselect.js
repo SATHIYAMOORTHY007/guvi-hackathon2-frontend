@@ -24,10 +24,10 @@ export default function Seatselect() {
     setLoading(true)
     try {
       let a = await axios.post(
-        `http://localhost:2001/api/v1/getseats/${params.id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getseats/${params.id}`,
       )
       let Theater = await axios.post(
-        `http://localhost:2001/api/v1/getTheaterbyid/${params.id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getTheaterbyid/${params.id}`,
       )
 
       setRows(a.data[0])
@@ -88,7 +88,7 @@ export default function Seatselect() {
     setLoading(true)
     try {
       let seatUpdate = await axios.put(
-        `http://localhost:2001/api/v1/updateSeats/${params.id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/updateSeats/${params.id}`,
         rows,
         {
           headers: {

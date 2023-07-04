@@ -21,12 +21,7 @@ function SelectTheater() {
 
     try {
       const value = await axios.post(
-        `http://localhost:2001/api/v1/getTheaterbyid/${params.id}`,
-        {
-          headers: {
-            token: auth.token,
-          },
-        },
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getTheaterbyid/${params.id}`,
       )
 
       setMovieid(params.id)

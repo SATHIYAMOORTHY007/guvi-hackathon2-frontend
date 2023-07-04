@@ -26,11 +26,14 @@ function Create() {
   }, [])
 
   const movieapi = async () => {
-    const a = await axios.get('http://localhost:2001/api/v1/getAllMovie', {
-      headers: {
-        token: auth.token,
+    const a = await axios.get(
+      'https://bookmyshow-ukl3.onrender.com/api/v1/getAllMovie',
+      {
+        headers: {
+          token: auth.token,
+        },
       },
-    })
+    )
     setMovie(a.data.message)
   }
 

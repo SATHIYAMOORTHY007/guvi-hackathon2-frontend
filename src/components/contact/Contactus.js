@@ -16,7 +16,7 @@ function Contactus() {
 
     try {
       await axios.post(
-        `http://localhost:2001/api/v1/auth/updateQuery/${auth.id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/auth/updateQuery/${auth.id}`,
         data,
         {
           headers: {
@@ -24,7 +24,7 @@ function Contactus() {
           },
         },
       )
-      console.log(data)
+
       alert('sent success')
       Navigate('/home')
     } catch (err) {
