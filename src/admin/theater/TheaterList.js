@@ -25,11 +25,6 @@ function TheaterList() {
       if (confirmdate) {
         await axios.delete(
           `https://bookmyshow-ukl3.onrender.com/api/v1/deleteTheater/${id}`,
-          {
-            headers: {
-              token: auth.token,
-            },
-          },
         )
         list()
       }

@@ -81,7 +81,6 @@ export default function Seatselect() {
       )
     }
     setLoading(false)
-    console.log('total price', totalprice)
   }
 
   const submit = async () => {
