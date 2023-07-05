@@ -18,15 +18,8 @@ function Contactus() {
       await axios.post(
         `https://bookmyshow-ukl3.onrender.com/api/v1/auth/updateQuery/${auth.id}`,
         data,
-        {
-          headers: {
-            token: auth.token,
-          },
-        },
       )
-
       alert('sent success')
-      Navigate('/home')
     } catch (err) {
       console.log(err.message)
     }
