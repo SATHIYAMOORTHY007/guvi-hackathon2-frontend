@@ -35,15 +35,9 @@ function MovieCreate() {
       data.releaseDate = selectestartingdate
       data.endDate = selecteenddate
 
-      console.log(data)
       const a = await axios.post(
         'https://bookmyshow-ukl3.onrender.com/api/v1/create',
         data,
-        {
-          headers: {
-            token: auth.token,
-          },
-        },
       )
 
       setLoading(false)
