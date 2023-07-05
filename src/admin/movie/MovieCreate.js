@@ -93,7 +93,7 @@ function MovieCreate() {
                   <input
                     type="text"
                     class="form-control"
-                    onChange={(e) => setImage(e.target.value.slice(4, 15))}
+                    onChange={(e) => setImage(e.target.value)}
                     value={image}
                     name="image"
                     placeholder="enter image url"
