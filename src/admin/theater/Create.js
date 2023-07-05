@@ -51,7 +51,7 @@ function Create() {
 
       console.log(data)
       const a = await axios.post(
-        'http://localhost:2001/api/v1/createTheater',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/createTheater',
         data,
         {
           headers: {

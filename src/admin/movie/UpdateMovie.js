@@ -26,7 +26,7 @@ function UpdateMovie() {
     try {
       setLoading(true)
       const movie = await axios.post(
-        `http://localhost:2001/api/v1/getParticularMovie/${params.id}`,
+        `https://bookmyshow-ukl3.onrender.com/api/v1/getParticularMovie/${params.id}`,
       )
 
       myformik.setValues(movie.data.message)
@@ -53,7 +53,7 @@ function UpdateMovie() {
       try {
         setLoading(true)
         const a = await axios.put(
-          `http://localhost:2001/api/v1/updateMovie/${params.id}`,
+          `https://bookmyshow-ukl3.onrender.com/api/v1/updateMovie/${params.id}`,
           values,
           {
             headers: {
