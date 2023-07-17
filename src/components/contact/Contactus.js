@@ -9,7 +9,8 @@ import '../contact/contect.css'
 function Contactus() {
   const { auth } = useContext(AuthContext)
   const [query, setQuery] = useState('')
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventdefault()
     let data = {}
 
     data.query = query
