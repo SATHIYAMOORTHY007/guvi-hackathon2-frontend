@@ -26,7 +26,6 @@ function Reservation() {
   const [res, setRes] = useState('')
   const [occupied, setOccupied] = useState([])
   const [success, setSuccess] = useState('')
-  //seats converted to array of numbers
 
   useEffect(() => {
     api()
@@ -96,7 +95,7 @@ function Reservation() {
     console.log('data', data)
     try {
       const response = await axios.post(
-        'http://localhost:2001/api/v1/payment',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/payment',
         data,
       )
       const session = await response.data
@@ -113,10 +112,7 @@ function Reservation() {
     } catch (err) {
       alert(err)
     }
-
-    //download pdf
   }
-  //all ticket info end backend
 
   return (
     <>
