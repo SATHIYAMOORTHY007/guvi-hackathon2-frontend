@@ -130,9 +130,9 @@ export default function Seatselect() {
           secondaryColor="white"
         />
       ) : (
-        <div className=".container-fluid">
+        <>
           <Navbar />
-          <div className="container col-md-8 ">
+          <div className="container">
             <ul className="showcase">
               <li>
                 <div className="seat"></div>
@@ -175,21 +175,25 @@ export default function Seatselect() {
             </div>
 
             <div className="bottom-content">
-              <p>{`Your Booked seats ${selectSeat.length} total ${totalprice}`}</p>
-              {selectSeat.length > 0 ? (
-                <button
-                  className="btn btn-primary confirm"
-                  onClick={submit}
-                  style={{ width: '10em' }}
-                >
-                  Confirm
-                </button>
-              ) : (
-                ''
-              )}
+              <div>
+                <p>{`Your Booked seats ${selectSeat.length} total ${totalprice}`}</p>
+              </div>
+              <div>
+                {selectSeat.length > 0 ? (
+                  <button
+                    className="btn btn-primary conform-btn"
+                    onClick={submit}
+                    style={{ width: '10em' }}
+                  >
+                    Confirm
+                  </button>
+                ) : (
+                  ''
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

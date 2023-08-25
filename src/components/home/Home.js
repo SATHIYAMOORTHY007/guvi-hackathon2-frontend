@@ -5,7 +5,6 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Oval } from 'react-loader-spinner'
-
 import Navbar from '../navbar/Navbar'
 import { useContext } from 'react'
 import AuthContext from '../../auth/Authcontext/Authcontext'
@@ -47,35 +46,33 @@ function Home() {
           secondaryColor="white"
         />
       ) : (
-        <div className=".container-fluid ">
+        <>
           <Navbar />
-          <div className="container col-lg-8">
-            <div className="row">
-              <div id="grid-container">
-                {array &&
-                  array.message.map((d) => {
-                    return (
-                      <div class="card">
-                        <img src={d.image} class="card-img-top" alt="..." />
-                        <div class="card-body">
-                          <h5 class="card-title">{d.name}</h5>
-                          <p class="card-text   text-justify">
-                            {d.description}
-                          </p>
-                          <Link
-                            to={`/SelectTheater/${d._id}`}
-                            class="btn btn-primary"
-                          >
-                            Book
-                          </Link>
-                        </div>
+          <div className="container">
+            <div className="row col-md-6 col-lg-12">
+              {array &&
+                array.message.map((d) => {
+                  return (
+                    <div className="card">
+                      <img src={d.image} class="card-img-top" alt="..." />
+                      <div className="card-body">
+                        <h5 className="card-title">{d.name}</h5>
+                        <p className="card-text   text-justify">
+                          {d.description}
+                        </p>
+                        <Link
+                          to={`/SelectTheater/${d._id}`}
+                          className="btn btn-primary text-center "
+                        >
+                          Book
+                        </Link>
                       </div>
-                    )
-                  })}
-              </div>
+                    </div>
+                  )
+                })}
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

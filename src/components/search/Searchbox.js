@@ -3,7 +3,6 @@ import React, { useContext } from 'react'
 import './search.css'
 
 function Searchbox() {
-  console.log(user)
   return (
     <div className="row">
       <div className="col-2 ">

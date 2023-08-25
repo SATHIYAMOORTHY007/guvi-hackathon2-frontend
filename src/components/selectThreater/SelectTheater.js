@@ -50,10 +50,10 @@ function SelectTheater() {
           secondaryColor="white"
         />
       ) : (
-        <div className=".container-fluid">
+        <>
           <Navbar />
-          <div className="container col-lg-8">
-            <div id="grid-container">
+          <div className="container">
+            <div className="row col-md-6 col-lg-12">
               {array?.message?.length > 0 ? (
                 array.message.map((d) => {
                   return (
@@ -87,7 +87,7 @@ function SelectTheater() {
               )}
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

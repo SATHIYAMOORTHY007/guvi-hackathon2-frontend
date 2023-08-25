@@ -2,10 +2,10 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, redirect } from 'react-router-dom'
+import { loadStripe } from '@stripe/stripe-js'
 import './reservation.css'
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
+
 import { useContext } from 'react'
 import AuthContext from '../../auth/Authcontext/Authcontext'
 
@@ -25,7 +25,7 @@ function Reservation() {
   const navigate = useNavigate()
   const [res, setRes] = useState('')
   const [occupied, setOccupied] = useState([])
-
+  const [success, setSuccess] = useState('')
   //seats converted to array of numbers
 
   useEffect(() => {
@@ -38,6 +38,7 @@ function Reservation() {
     setSeats(b)
   }, [])
   const api = async () => {
+    //get movie data using id
     const movie = await axios.post(
       `https://bookmyshow-ukl3.onrender.com/api/v1/getParticularMovie/${params.movieid}`,
     )
@@ -45,7 +46,7 @@ function Reservation() {
     setImage(movie.data.message.image)
     setLanguage(movie.data.message.language)
     setGenre(movie.data.message.genre)
-
+    //get theater data using id
     const theater = await axios.post(
       `https://bookmyshow-ukl3.onrender.com/api/v1/getParticularTheater/${params.theaterid}`,
     )
@@ -58,7 +59,28 @@ function Reservation() {
     setDate(theater.data.message.date)
   }
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
+    //pdf info
+
+    let item = {}
+    item.image = image
+    item.moviename = moviename
+    item.language = language
+    item.genre = genre
+    item.total = params.totalprice
+    item.date = date
+    item.time = time
+    item.theatername = theatername
+    item.address = address
+    item.seats = seats
+    item.price = params.totalprice
+    localStorage.clear('items', JSON.stringify(item))
+    localStorage.setItem('items', JSON.stringify(item))
+
+    localStorage.setItem('theaterid', JSON.stringify(params.theaterid))
+    localStorage.setItem('occupied', JSON.stringify(occupied))
+    // payment added using stripe
     let data = {}
     data.date = date
     data.startAt = time
@@ -67,64 +89,34 @@ function Reservation() {
     data.total = params.totalprice
     data.movieId = params.movieid
     data.theaterId = params.theaterid
-
+    localStorage.setItem('data', JSON.stringify(data))
+    const stripe = await loadStripe(
+      'pk_test_51NiESQSDD08v8MpQ65E9CCPLDbWGYyp3NSqujwWPY3tx2cGMAh6IbfQMICJocZL5n635oyaKI7xyY3JRXmHoMUxi00y5nSRMkf',
+    )
+    console.log('data', data)
     try {
-      const a = await axios.post(
-        'https://bookmyshow-ukl3.onrender.com/api/v1/createReservation',
+      const response = await axios.post(
+        'http://localhost:2001/api/v1/payment',
         data,
-        {
-          headers: {
-            token: auth.token,
-          },
-        },
       )
-      occupied.forEach((e) => {
-        e.forEach((seats) => {
-          if (seats.isReserved === true) {
-            seats.occupied = true
-          }
-        })
-      })
-      let seatUpdate = await axios.put(
-        `https://bookmyshow-ukl3.onrender.com/api/v1/updateSeats/${params.theaterid}`,
-        occupied,
-        {
-          headers: {
-            token: auth.token,
-          },
-        },
-      )
+      const session = await response.data
 
-      setRes(a.data.reservation._id)
-
-      var doc = new jsPDF('p', 'mm', 'a4')
-      html2canvas(document.querySelector('.container')).then(function (canvas) {
-        var imgData = canvas.toDataURL('image/png')
-        var pageHeight = 300
-        var imgWidth = 210
-        var imgHeight = (canvas.height * imgWidth) / canvas.width
-        var heightLeft = imgHeight
-        var position = 15
-
-        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
-        heightLeft -= pageHeight
-
-        while (heightLeft >= 0) {
-          position = heightLeft - imgHeight
-          doc.addPage()
-          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
-          heightLeft -= pageHeight
-        }
-        doc.output('dataurlnewwindow')
-        doc.save(Date.now() + '.pdf')
+      let result = stripe.redirectToCheckout({
+        sessionId: session.id,
       })
 
-      alert('Cheack your mail')
-      navigate(`/home`)
+      if (result.error) {
+        setSuccess(result.error)
+      }
+
+      //seat booked
     } catch (err) {
-      console.log(err)
+      alert(err)
     }
+
+    //download pdf
   }
+  //all ticket info end backend
 
   return (
     <>

@@ -49,13 +49,12 @@ function Create() {
       data.startsAt = startsAt
       data.date = new Date(selectestartingdate)
 
-      console.log(data)
       const a = await axios.post(
         'https://bookmyshow-ukl3.onrender.com/api/v1/createTheater',
-        data,
         {
+          data,
           headers: {
-            token: auth.token,
+           token: auth.token,
           },
         },
       )

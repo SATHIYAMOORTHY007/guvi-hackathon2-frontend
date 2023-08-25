@@ -7,40 +7,41 @@ function Navbar() {
   const { auth } = useContext(AuthContext)
 
   return (
-    <nav class="topnav">
+    <div className="topnav">
       <div>
-        <h3 className="name mt-2">Pixel Cinima's</h3>
+        <h4 className="name mt-2">Pixel Cinima's</h4>
       </div>
       <div>
-        <h3 className="text-center mt-2">
-          <li class="fa fa-home">
+        <h4 className="text-center mt-2">
+          <li className="fa fa-home">
             <Link to={'/home'}>Home</Link>
           </li>
-        </h3>
+        </h4>
       </div>
       <div>
         {auth?.role ? (
-          <h3 className="text-center mt-2">
+          <h4 className="text-center mt-2">
             <i class="fa fa-dashboard">
               <Link to={'/admin/dashboard'}>Admin Dashboard</Link>
             </i>
-          </h3>
+          </h4>
         ) : (
           ''
         )}
       </div>
 
-      <h3 className="text-center mt-2">
-        Welcome <p>{auth?.name ? auth.name : ''}</p>
-      </h3>
+      <h4 className="text-center m-2">
+        Welcome <br></br> {auth?.name ? auth.name : ''}
+      </h4>
+
       <Link to={'/user/contact'}>
-        <h3 className="text-center mt-2">Contact Us</h3>
+        <h4 className="text-center mt-2">Contact Us</h4>
       </Link>
 
-      <Link to="/">
-        <h2 className="logout">LogOut</h2>
-      </Link>
-    </nav>
+      <h4 className="logout mt-2">
+        <Link to="/">LogOut</Link>
+      </h4>
+    </div>
   )
 }
 

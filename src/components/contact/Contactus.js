@@ -1,15 +1,16 @@
 import { React } from 'react'
-
 import { useContext } from 'react'
 import AuthContext from '../../auth/Authcontext/Authcontext'
 import axios from 'axios'
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import '../contact/contect.css'
 function Contactus() {
+  let Navigate = useNavigate()
   const { auth } = useContext(AuthContext)
   const [query, setQuery] = useState('')
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     let data = {}
 
     data.query = query
@@ -20,6 +21,7 @@ function Contactus() {
         data,
       )
       alert('sent success')
+      Navigate('/home')
     } catch (err) {
       console.log(err.message)
     }

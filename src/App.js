@@ -22,6 +22,8 @@ import User from './admin/user/User'
 import Protect from './Protect'
 import Required from './Required'
 import GetAllQuery from './components/contact/GetAllQuery'
+import Afterpay from './components/afterpay.js/Afterpay'
+import PayFailed from './components/PayFailed'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgetpassword" element={<Forgetpassword />} />
         <Route path="/resetpassword/:id/:token" element={<Reset />} />
+        <Route path="/payment" element={<Afterpay />} />
+        <Route path="/failed" element={<PayFailed />} />
         <Route element={<Required />}>
           <Route path="/" element={<Protect />}>
             <Route path="home" element={<Home />} />

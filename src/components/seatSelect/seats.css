@@ -1,10 +1,6 @@
 .Seats-row{
     display: flex;
     margin: auto;
-  
-}
-.container{
-    min-width: 100vh;
 }
 .seat{
     width: 2em;
@@ -49,8 +45,7 @@
 	border-right: 50px solid transparent;
 	height: 0;
     margin: auto;
-	width:100vh;
-    position: relative;
+	width:90vh;
     text-align: center;
     
 }
@@ -62,6 +57,7 @@
 }
 .bottom-content{
      display: flex;
+     justify-content: space-between;
 }
 .screen-text{
     position: relative;
@@ -70,9 +66,11 @@
 }
 .showcase{
     display: flex;
-    position: relative;
-    list-style: none;
+    justify-content: space-between;
+ 
+    list-style: none; 
 }
+.conform-btn{ float: right;}
 ul,li{
     text-decoration: none;
 }
