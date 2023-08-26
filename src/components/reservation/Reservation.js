@@ -95,7 +95,7 @@ function Reservation() {
     console.log('data', data)
     try {
       const response = await axios.post(
-        'https://bookmyshow-ukl3.onrender.com/api/v1/payment',
+        'http://localhost:2001/api/v1/payment',
         data,
       )
       const session = await response.data
