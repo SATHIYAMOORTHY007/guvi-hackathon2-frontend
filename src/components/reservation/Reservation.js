@@ -92,7 +92,7 @@ function Reservation() {
     const stripe = await loadStripe(
       'pk_test_51NiESQSDD08v8MpQ65E9CCPLDbWGYyp3NSqujwWPY3tx2cGMAh6IbfQMICJocZL5n635oyaKI7xyY3JRXmHoMUxi00y5nSRMkf',
     )
-    console.log('data', data)
+
     try {
       const response = await axios.post(
         'http://localhost:2001/api/v1/payment',
