@@ -90,7 +90,7 @@ function Reservation() {
     data.theaterId = params.theaterid
     localStorage.setItem('data', JSON.stringify(data))
     const stripe = await loadStripe(
-      'pk_test_51NiESQSDD08v8MpQ65E9CCPLDbWGYyp3NSqujwWPY3tx2cGMAh6IbfQMICJocZL5n635oyaKI7xyY3JRXmHoMUxi00y5nSRMkf',
+      'pk_test_51Nhas0SEGmp3Wmr5kj0AtZYnvaOC4OuDrZWNECzWonHXvOpURE6ARLqkEJyhRj1BHG3WWn76Z0na38Vulrqm5mko00CszR1Blw',
     )
 
     try {
