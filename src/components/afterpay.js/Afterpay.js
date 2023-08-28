@@ -15,7 +15,8 @@ function Afterpay() {
   const [data, setData] = useState('')
   const [theaterid, setTheaterid] = useState('')
   const [occupied, setoccupied] = useState('')
-
+  const [seatUpdated, setSeatUpdated] = useState(false)
+  const [isReserved, setIsReserved] = useState(false)
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('items'))
     const datas = JSON.parse(localStorage.getItem('data'))
@@ -29,8 +30,8 @@ function Afterpay() {
       setoccupied(occupieds)
     }
     setTimeout(() => {
-      download()
-    }, 2000)
+      if (isReserved && seatUpdated) download()
+    }, 5000)
   }, [])
   //seats Reservation comfirmed
 
@@ -44,10 +45,11 @@ function Afterpay() {
         })
       })
 
-      await axios.put(
+      const updateSeats = await axios.put(
         `https://bookmyshow-ukl3.onrender.com/api/v1/updateSeats/${theaterid}`,
         occupied,
       )
+      setSeatUpdated(true)
     } catch (err) {
       console.log(err)
     }
@@ -55,10 +57,11 @@ function Afterpay() {
   updated()
   const seatsbooked = async () => {
     try {
-      const a = await axios.post(
+      const createReservation = await axios.post(
         'https://bookmyshow-ukl3.onrender.com/api/v1/createReservation',
         data,
       )
+      isReserved(true)
     } catch (err) {
       console.log(err)
     }
