@@ -100,15 +100,13 @@ function Reservation() {
       )
       const session = await response.data
 
-      let result = stripe.redirectToCheckout({
+      /*  let result = stripe.redirectToCheckout({
         sessionId: session.id,
-      })
+      }) */
 
-      if (result.error) {
-        setSuccess(result.error)
+      if (session.error) {
+        setSuccess(session.error)
       }
-
-      //seat booked
     } catch (err) {
       alert(err)
     }
