@@ -32,11 +32,10 @@ function Afterpay() {
       updated()
       download()
     }
-  
   }, [])
   //seats Reservation comfirmed
 
-  const updated =  () => {
+  const updated = async () => {
     try {
       occupied.map((e) => {
         return e.map((seats) => {
@@ -56,7 +55,7 @@ function Afterpay() {
     }
   }
 
-  const seatsbooked =  () => {
+  const seatsbooked = async () => {
     try {
       const createReservation = await axios.post(
         'http://localhost:2001/api/v1/createReservation',
