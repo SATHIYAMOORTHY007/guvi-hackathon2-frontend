@@ -78,13 +78,13 @@ function Afterpay() {
       var heightLeft = imgHeight
       var position = 15
 
-      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+      doc.addImage(imgData, 'JPG', 0, position, imgWidth, imgHeight)
       heightLeft -= pageHeight
 
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight
         doc.addPage()
-        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+        doc.addImage(imgData, 'JPG', 0, position, imgWidth, imgHeight)
         heightLeft -= pageHeight
       }
       doc.output('dataurlnewwindow')
