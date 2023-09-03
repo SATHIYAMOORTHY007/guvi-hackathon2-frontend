@@ -28,7 +28,6 @@ function Afterpay() {
       setData(data)
       setTheaterid(theaterids)
       setoccupied(occupieds)
-      download()
     }
   }, [])
   //seats Reservation comfirmed
@@ -66,7 +65,7 @@ function Afterpay() {
   })()
 
   //download pdf
-  const download = async () => {
+  const download = (async () => {
     var doc = new jsPDF('p', 'mm', 'a4')
     await html2canvas(document.querySelector('.container')).then(function (
       canvas,
@@ -90,7 +89,7 @@ function Afterpay() {
       doc.output('dataurlnewwindow')
       doc.save(Date.now() + '.pdf')
     })
-  }
+  })()
 
   return (
     <>
