@@ -28,12 +28,15 @@ function Afterpay() {
       setData(data)
       setTheaterid(theaterids)
       setoccupied(occupieds)
+      seatsbooked()
+      updated()
+      download()
     }
-    download()
+  
   }, [])
   //seats Reservation comfirmed
 
-  const updated = (async () => {
+  const updated =  () => {
     try {
       occupied.map((e) => {
         return e.map((seats) => {
@@ -51,9 +54,9 @@ function Afterpay() {
     } catch (err) {
       console.log(err)
     }
-  })()
+  }
 
-  const seatsbooked = (async () => {
+  const seatsbooked =  () => {
     try {
       const createReservation = await axios.post(
         'http://localhost:2001/api/v1/createReservation',
@@ -63,7 +66,7 @@ function Afterpay() {
     } catch (err) {
       console.log(err)
     }
-  })()
+  }
 
   //download pdf
   const download = async () => {
