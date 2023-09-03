@@ -70,14 +70,14 @@ function Afterpay() {
     await html2canvas(document.querySelector('.container')).then(function (
       canvas,
     ) {
-      var imgData = canvas.toDataURL('image/jpg')
+      var imgData = canvas.toDataURL('image/JPG')
       var pageHeight = 300
       var imgWidth = 210
       var imgHeight = (canvas.height * imgWidth) / canvas.width
       var heightLeft = imgHeight
       var position = 15
 
-      doc.addImage(imgData, 'JPG', 0, position, imgWidth, imgHeight)
+      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
       heightLeft -= pageHeight
 
       while (heightLeft >= 0) {
