@@ -55,7 +55,7 @@ function Afterpay() {
   const seatsbooked = (async () => {
     try {
       const createReservation = await axios.post(
-        'http://localhost:2001/api/v1/createReservation',
+        'https://bookmyshow-ukl3.onrender.com/api/v1/createReservation',
         data,
       )
       isReserved(true)
