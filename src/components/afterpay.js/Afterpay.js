@@ -19,23 +19,21 @@ function Afterpay() {
   const [isReserved, setIsReserved] = useState(false)
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('items'))
-    const datas = JSON.parse(localStorage.getItem('data'))
+    const data = JSON.parse(localStorage.getItem('data'))
     const theaterids = JSON.parse(localStorage.getItem('theaterid'))
     const occupieds = JSON.parse(localStorage.getItem('occupied'))
 
-    if (items && datas && theaterids && occupieds) {
+    if (items && data && theaterids && occupieds) {
       setItem(items)
-      setData(datas)
+      setData(data)
       setTheaterid(theaterids)
       setoccupied(occupieds)
     }
-    setTimeout(() => {
-      if (isReserved && seatUpdated) download()
-    }, 5000)
+    download()
   }, [])
   //seats Reservation comfirmed
 
-  const updated = async () => {
+  const updated = (async () => {
     try {
       occupied.map((e) => {
         return e.map((seats) => {
@@ -53,20 +51,20 @@ function Afterpay() {
     } catch (err) {
       console.log(err)
     }
-  }
-  updated()
-  const seatsbooked = async () => {
+  })()
+
+  const seatsbooked = (async () => {
     try {
       const createReservation = await axios.post(
-        'https://bookmyshow-ukl3.onrender.com/api/v1/createReservation',
+        'http://localhost:2001/api/v1/createReservation',
         data,
       )
       isReserved(true)
     } catch (err) {
       console.log(err)
     }
-  }
-  seatsbooked()
+  })()
+
   //download pdf
   const download = async () => {
     var doc = new jsPDF('p', 'mm', 'a4')
