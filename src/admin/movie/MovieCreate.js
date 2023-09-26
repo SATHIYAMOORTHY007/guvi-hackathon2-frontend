@@ -4,7 +4,7 @@ import DatePicker from 'react-date-picker'
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
 import '../theater/create.css'
-import { Oval } from 'react-loader-spinner'
+import { Discuss, Oval } from 'react-loader-spinner'
 import axios from 'axios'
 import AuthContext from '../../auth/Authcontext/Authcontext'
 
@@ -23,7 +23,6 @@ function MovieCreate() {
   const onsubmit = async (e) => {
     e.preventDefault()
     try {
-      setLoading(true)
       const data = {}
       data.name = name
       data.language = language
@@ -35,13 +34,26 @@ function MovieCreate() {
       data.releaseDate = selectestartingdate
       data.endDate = selecteenddate
 
-      const a = await axios.post(
-        'https://bookmyshow-ukl3.onrender.com/api/v1/create',
-        data,
-      )
+      if (
+        name !== '' &&
+        language !== '' &&
+        genre !== '' &&
+        image !== '' &&
+        director !== '' &&
+        description !== '' &&
+        duration !== '' &&
+        selectestartingdate !== '' &&
+        selecteenddate !== ''
+      ) {
+        const a = await axios.post(
+          'https://bookmyshow-ukl3.onrender.com/api/v1/create',
+          data,
+        )
 
-      setLoading(false)
-      alert('success')
+        alert('success')
+      } else {
+        alert('required all')
+      }
     } catch (error) {
       console.log(error)
     }
@@ -145,22 +157,26 @@ function MovieCreate() {
                 </div>
                 <div className="item8">
                   <label for="releaseDate">ReleaseDate</label>
-                  <DatePicker
+                  <input
+                    type="date"
                     selected={selectestartingdate}
                     name="selectestartingdate"
-                    onChange={(date) => setSelectestartingdate(date)}
+                    onChange={(e) => setSelectestartingdate(e.target.value)}
                     value={selectestartingdate}
                   />
                 </div>
                 <div className="item9">
                   <label for="endDate">EndDate</label>
-                  <DatePicker
+                  <input
+                    type="date"
                     selected={selecteenddate}
-                    onChange={(date) => setSelecteenddate(date)}
+                    onChange={(e) => setSelecteenddate(e.target.value)}
                     value={selecteenddate}
                   />
                 </div>
-                <button onClick={onsubmit}>Send</button>
+                <button className="btn btn-primary" onClick={onsubmit}>
+                  Send
+                </button>
               </div>
             </form>
           </div>

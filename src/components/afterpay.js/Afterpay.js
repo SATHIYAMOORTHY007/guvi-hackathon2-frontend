@@ -12,6 +12,7 @@ function Afterpay() {
   const Navigate = useNavigate('')
   const { auth } = useContext(AuthContext)
   const [item, setItem] = useState('')
+
   const [data, setData] = useState('')
   const [theaterid, setTheaterid] = useState('')
   const [occupied, setoccupied] = useState('')
@@ -70,7 +71,7 @@ function Afterpay() {
     await html2canvas(document.querySelector('.container')).then(function (
       canvas,
     ) {
-      var imgData = canvas.toDataURL('image/JPG')
+      var imgData = canvas.toDataURL(item.image)
       var pageHeight = 300
       var imgWidth = 210
       var imgHeight = (canvas.height * imgWidth) / canvas.width

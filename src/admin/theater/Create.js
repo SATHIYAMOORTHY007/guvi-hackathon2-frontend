@@ -54,7 +54,7 @@ function Create() {
         {
           data,
           headers: {
-           token: auth.token,
+            token: auth.token,
           },
         },
       )
@@ -148,15 +148,18 @@ function Create() {
 
             <div className="item8">
               <label for="date">Date</label>
-              <DatePicker
+              <input
+                type="date"
                 selected={selectestartingdate}
                 name="selectestartingdate"
-                onChange={(date) => setSelectestartingdate(date)}
+                onChange={(e) => setSelectestartingdate(e.target.value)}
                 value={selectestartingdate}
               />
             </div>
 
-            <button onClick={onsubmit}>Send</button>
+            <button className="btn btn-primary" onClick={onsubmit}>
+              Send
+            </button>
           </div>
         </form>
       </div>
